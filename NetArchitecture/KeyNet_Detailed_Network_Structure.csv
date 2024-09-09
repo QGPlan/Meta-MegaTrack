@@ -1,0 +1,15 @@
+Layer Name,Type,Output Shape,Kernel Size / Stride / Padding,Number of Parameters,Description
+Input,Input Layer,N x C x H x W,-,-,Input image
+Conv2d_1,Convolutional Layer,N x 32 x (H/2) x (W/2),3 / 2 / 1,320,"Convolution with 32 filters, kernel size 3, stride 2"
+BatchNorm2d_1,Batch Normalization,N x 32 x (H/2) x (W/2),-,64,Batch normalization applied to feature maps
+ReLU6_1,Activation (ReLU6),N x 32 x (H/2) x (W/2),-,0,ReLU6 activation function
+InvertedResidual_1,Inverted Residual Block,N x 32 x (H/4) x (W/4),"3x3 Depthwise, Expand Ratio: 1",736,First inverted residual block
+InvertedResidual_2,Inverted Residual Block,N x 32 x (H/4) x (W/4),"3x3 Depthwise, Expand Ratio: 6",1856,Second inverted residual block
+InvertedResidual_3,Inverted Residual Block,N x 64 x (H/8) x (W/8),"3x3 Depthwise, Expand Ratio: 6",1856,Third inverted residual block
+Linear_1,Fully Connected Layer,N x 4608,-,290304,Fully connected layer to expand keypoints dimension
+ReLU6_2,Activation (ReLU6),N x 4608,-,0,ReLU6 activation function
+FusedNetwork,Fused Network Block,N x 160 x (H/16) x (W/16),Various,Varies,Fusion of image and keypoint features
+NewhandRegression,Regression Network,N x 63,-,Varies,Regression network for keypoint coordinates
+HeatmapRegression,Heatmap Network,N x 21 x (H/4) x (W/4),Various,Varies,Heatmap regression network for keypoint localization
+Output_Coordinates,Output Layer,N x 63,-,-,Output predicted keypoint coordinates
+Output_Heatmap,Output Layer,N x 21 x (H/4) x (W/4),-,-,Output predicted keypoint heatmaps

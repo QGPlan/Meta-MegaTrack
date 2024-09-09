@@ -1,3 +1,16 @@
 torch
 torchvison
 torchsummary
+wandb
+opencv-python
+opencv-transforms
+Pillow
+numpy
+scipy
+matplotlib
+wandb
+ujson
+smallestenclosingcircle
+colour-science
+pandas
+einops

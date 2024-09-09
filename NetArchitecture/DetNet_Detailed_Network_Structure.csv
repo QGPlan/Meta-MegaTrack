@@ -1,0 +1,19 @@
+Layer Name,Type,Output Shape,Kernel Size / Stride / Padding,Number of Parameters,Description
+Input,Input Layer,N x C x H x W,-,-,Input image
+AvgPool2d,Pooling Layer,N x C x (H/4) x (W/4),4 / 4 / 0,0,Average Pooling with kernel size 4 and stride 4
+Conv2d_1,Convolutional Layer,N x 32 x (H/8) x (W/8),3 / 2 / 1,320,"Convolution with 32 filters, kernel size 3, stride 2"
+BatchNorm2d_1,Batch Normalization,N x 32 x (H/8) x (W/8),-,64,Batch normalization applied to feature maps
+ReLU6_1,Activation (ReLU6),N x 32 x (H/8) x (W/8),-,0,ReLU6 activation function
+InvertedResidual_1,Inverted Residual Block,N x 32 x (H/8) x (W/8),"3x3 Depthwise, Expand Ratio: 1",736,First inverted residual block
+InvertedResidual_2,Inverted Residual Block,N x 32 x (H/16) x (W/16),"3x3 Depthwise, Expand Ratio: 6",1856,Second inverted residual block
+InvertedResidual_3,Inverted Residual Block,N x 32 x (H/16) x (W/16),"3x3 Depthwise, Expand Ratio: 6",1856,Third inverted residual block
+InvertedResidual_4,Inverted Residual Block,N x 64 x (H/32) x (W/32),"3x3 Depthwise, Expand Ratio: 6",3776,Fourth inverted residual block
+InvertedResidual_5,Inverted Residual Block,N x 64 x (H/32) x (W/32),"3x3 Depthwise, Expand Ratio: 6",3776,Fifth inverted residual block
+InvertedResidual_6,Inverted Residual Block,N x 64 x (H/64) x (W/64),"3x3 Depthwise, Expand Ratio: 6",3776,Sixth inverted residual block
+InvertedResidual_7,Inverted Residual Block,N x 64 x (H/64) x (W/64),"3x3 Depthwise, Expand Ratio: 6",5568,Seventh inverted residual block
+InvertedResidual_8,Inverted Residual Block,N x 96 x (H/64) x (W/64),"3x3 Depthwise, Expand Ratio: 6",5568,Eighth inverted residual block
+InvertedResidual_9,Inverted Residual Block,N x 96 x (H/64) x (W/64),"3x3 Depthwise, Expand Ratio: 6",11008,Ninth inverted residual block
+InvertedResidual_10,Inverted Residual Block,N x 128 x (H/128) x (W/128),"3x3 Depthwise, Expand Ratio: 6",11008,Tenth inverted residual block
+InvertedResidual_11,Inverted Residual Block,N x 128 x (H/128) x (W/128),"3x3 Depthwise, Expand Ratio: 6",11008,Eleventh inverted residual block
+InvertedResidual_12,Inverted Residual Block,N x 160 x (H/128) x (W/128),"3x3 Depthwise, Expand Ratio: 6",16048,Twelfth inverted residual block
+Output,Output Layer,N x 160 x (H/128) x (W/128),-,-,Output of DetNet
